@@ -1,4 +1,6 @@
 {% load django_browser_reload %}
+{% load countries %}
+
 {% load static %}
 
 <!doctype html>
@@ -19,6 +21,12 @@
             <p class="small">
                 Edit <code>hello_world/templates/index.html</code> and see changes live!
             </p>
+            {% get_countries as countries %}
+            <select>
+            {% for country in countries %}
+                <option value="{{ country.code }}">{{ country.name }}</option>
+            {% endfor %}
+            </select>        
         </header>
     </div>
 </body>
